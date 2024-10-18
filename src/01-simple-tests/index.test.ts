@@ -8,7 +8,12 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should subtract two numbers', () => {
-    // Write your test here
+    const difference = simpleCalculator({
+      a: 35,
+      b: 30,
+      action: Action.Subtract,
+    });
+    expect(difference).toBe(5);
   });
 
   test('should multiply two numbers', () => {
