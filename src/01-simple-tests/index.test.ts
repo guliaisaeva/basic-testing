@@ -17,22 +17,56 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should multiply two numbers', () => {
-    // Write your test here
+    const product = simpleCalculator({
+      a: 3,
+      b: 5,
+      action: Action.Multiply,
+    });
+    expect(product).toBe(15);
   });
 
   test('should divide two numbers', () => {
-    // Write your test here
+    const quotient = simpleCalculator({
+      a: 20,
+      b: 2,
+      action: Action.Divide,
+    });
+    expect(quotient).toBe(10);
   });
 
   test('should exponentiate two numbers', () => {
-    // Write your test here
+    const power = simpleCalculator({
+      a: 20,
+      b: 2,
+      action: Action.Exponentiate,
+    });
+    expect(power).toBe(400);
   });
 
   test('should return null for invalid action', () => {
-    // Write your test here
+    const invalidActions = ['invalid-action', '', 123, undefined, null];
+
+    invalidActions.forEach((action) => {
+      const result = simpleCalculator({ a: 2, b: 3, action });
+      expect(result).toBeNull();
+    });
   });
 
   test('should return null for invalid arguments', () => {
-    // Write your test here
+    const result1 = simpleCalculator({ a: 'ten', b: 3, action: Action.Add });
+    const result2 = simpleCalculator({
+      a: 2,
+      b: null,
+      action: Action.Multiply,
+    });
+    const result3 = simpleCalculator({
+      a: undefined,
+      b: 5,
+      action: Action.Subtract,
+    });
+
+    expect(result1).toBeNull();
+    expect(result2).toBeNull();
+    expect(result3).toBeNull();
   });
 });
