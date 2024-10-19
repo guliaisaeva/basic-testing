@@ -69,7 +69,7 @@ describe('BankAccount', () => {
       expect(balance).toBeGreaterThanOrEqual(0);
       expect(balance).toBeLessThanOrEqual(100);
     } else {
-      fail('fetchBalance returned null, request failed');
+      throw new Error('fetchBalance returned null, request failed');
     }
   });
 
