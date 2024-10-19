@@ -38,19 +38,30 @@ describe('BankAccount', () => {
   });
 
   test('should deposit money', () => {
-    // Write your test here
+    const accountWithBalance = getBankAccount(500);
+    accountWithBalance.deposit(100);
+    expect(accountWithBalance.getBalance()).toBe(600);
   });
 
   test('should withdraw money', () => {
-    // Write your test here
+    const accountWithBalance = getBankAccount(500);
+    accountWithBalance.withdraw(400);
+    expect(accountWithBalance.getBalance()).toBe(100);
   });
 
   test('should transfer money', () => {
-    // Write your test here
+    const account1 = getBankAccount(100);
+    const account2 = getBankAccount(60);
+    account1.transfer(50, account2);
+    expect(account1.getBalance()).toBe(50);
+    expect(account2.getBalance()).toBe(110);
   });
 
   test('fetchBalance should return number in case if request did not failed', async () => {
-    // Write your tests here
+    const accountWithBalance = getBankAccount(500);
+    const balance = await accountWithBalance.fetchBalance();
+    expect(balance).toBeGreaterThanOrEqual(0);
+    expect(balance).toBeLessThanOrEqual(500);
   });
 
   test('should set new balance if fetchBalance returned number', async () => {
